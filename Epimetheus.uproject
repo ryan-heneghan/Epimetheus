@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{A4CE8215-47C4-FEF6-9759-ACB4B68F49BC}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "Epimetheus",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
