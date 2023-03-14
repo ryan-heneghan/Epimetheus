@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{30899573-412D-0F2C-9CC2-BA86AFCA136A}",
+	"EngineAssociation": "{9559E123-4A50-CA19-FD9B-D5A5B3F4147F}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "Epimetheus",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
