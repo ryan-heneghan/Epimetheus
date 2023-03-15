@@ -12,8 +12,6 @@ UShootComponent::UShootComponent()
 	m_PowerLevel = 1;
 	m_CurrentBuildTimer = 0.f;
 	m_CanStartBuilding = false;
-	m_Level2PowerPoint = 1.f;
-	m_Level3PowerPoint = 2.f;
 }
 
 
@@ -23,6 +21,11 @@ void UShootComponent::BeginPlay()
 	Super::BeginPlay();
 
 	m_CurrentBuildTimer = 0.f;
+	
+	if (m_CurrentBuildTimer >= m_MaxBuildTime)
+	{
+		ShootProjectile();
+	}
 }
 
 
