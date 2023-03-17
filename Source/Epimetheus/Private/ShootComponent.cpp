@@ -12,6 +12,9 @@ UShootComponent::UShootComponent()
 	m_PowerLevel = 1;
 	m_CurrentBuildTimer = 0.f;
 	m_CanStartBuilding = false;
+
+	m_Level2PowerPoint = 0.5f;
+	m_Level3PowerPoint = 1.5f;
 }
 
 
