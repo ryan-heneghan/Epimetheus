@@ -43,10 +43,16 @@ void UShootComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 	}
 	
 	m_CurrentBuildTimer += DeltaTime;
+
+	if (m_CurrentBuildTimer >= m_MaxBuildTime)
+	{
+		ShootProjectile();
+	}
 }
 
 void UShootComponent::BuildProjectile()
 {
+	m_CurrentBuildTimer = 0.f;
 	m_CanStartBuilding = true;
 }
 
@@ -57,17 +63,39 @@ void UShootComponent::ShootProjectile()
 	{
 		// Shoot Level 1 Projectile
 		m_PowerLevel = 1;
+
+		FVector spawnLoc = (m_SpawnLocation->GetActorLocation());
+		FRotator spawnRot = (m_SpawnLocation->GetActorRotation());
+		FActorSpawnParameters spawnInfo;
+		
+		m_Projectile1 = GetWorld()->SpawnActor<UClass>(spawnLoc, spawnRot, spawnInfo);
+		
 	}
 	else if (m_CurrentBuildTimer >= m_Level2PowerPoint && m_CurrentBuildTimer < m_Level3PowerPoint)
 	{
 		// Shoot Level 2 Projectile
 		m_PowerLevel = 2;
+
+		FVector spawnLoc(0.f, 0.f, 0.f);
+		FRotator spawnRot(0.f, 0.f, 0.f);;
+		FActorSpawnParameters spawnInfo;
+		
+		m_Projectile2 = GetWorld()->SpawnActor<UClass>(spawnLoc, spawnRot, spawnInfo);
 	}
 	else if (m_CurrentBuildTimer >= m_Level3PowerPoint)
 	{
 		// Shoot Level 1 Projectile
 		m_PowerLevel = 3;
+
+		FVector spawnLoc = (m_SpawnLocation->GetActorLocation());
+		FRotator spawnRot = (m_SpawnLocation->GetActorRotation());
+		FActorSpawnParameters spawnInfo;
+		
+		m_Projectile3 = GetWorld()->SpawnActor<UClass>(spawnLoc, spawnRot, spawnInfo);
 	}
+
+	m_CanStartBuilding = true;
+	m_CurrentBuildTimer = 0.f;
 }
 
 

@@ -54,4 +54,16 @@ protected:
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
 	void ShootProjectile();
 
+	// Different Projectile Levels
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	AActor* m_SpawnLocation;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	UClass* m_Projectile1;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	UClass* m_Projectile2;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	UClass* m_Projectile3;
 };
