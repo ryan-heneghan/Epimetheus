@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/ArrowComponent.h"
 #include "ShootComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FShootComponent, bool, startBuilding, float, currentBuildTime);
@@ -23,7 +24,7 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Components")
 	FShootComponent onComponentBuild;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
 	bool m_CanStartBuilding;
 	
 protected:
@@ -53,10 +54,13 @@ protected:
 
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
 	void ShootProjectile();
-
+	
 	// Different Projectile Levels
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
-	AActor* m_SpawnLocation;
+	UArrowComponent* ArrowComponent;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	UClass* Player;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	UClass* m_Projectile1;
@@ -66,4 +70,7 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	UClass* m_Projectile3;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	UClass* SpawnProjectileBP;
 };
