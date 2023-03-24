@@ -15,6 +15,10 @@ UShootComponent::UShootComponent()
 
 	m_Level2PowerPoint = 0.5f;
 	m_Level3PowerPoint = 1.5f;
+
+	SpawnLocationOffset = FVector3d(60.0f, 0.0f, 40.0f);
+	
+	Player = GetOwner();
 }
 
 
@@ -24,11 +28,7 @@ void UShootComponent::BeginPlay()
 	Super::BeginPlay();
 
 	m_CurrentBuildTimer = 0.f;
-	
-	if (m_CurrentBuildTimer >= m_MaxBuildTime)
-	{
-		ShootProjectile();
-	}
+	Player = GetOwner();
 }
 
 
@@ -59,22 +59,17 @@ void UShootComponent::BuildProjectile()
 
 void UShootComponent::ShootProjectile()
 {
-	if (ArrowComponent == NULL)
-	{
-		return;
-	}
-	
 	// Stop building power
 	m_CanStartBuilding = false;
 
 	// Get the world location of the arrow component
-	FVector SpawnLocation = ArrowComponent->GetComponentToWorld().GetLocation();
+	FVector SpawnLocation = Player->GetActorLocation() + SpawnLocationOffset;
 
 	// Set the desired rotation for the spawned actor
-	FRotator SpawnRotation = ArrowComponent->GetComponentRotation();
+	FRotator SpawnRotation = Player->GetActorRotation();
 
 	// Create a new FTransform object using the spawn location and rotation
-	FTransform SpawnTransform = FTransform(SpawnRotation, SpawnLocation);
+	SpawnTransform = FTransform(SpawnRotation, SpawnLocation);
 	
 	if (m_CurrentBuildTimer < m_Level2PowerPoint)
 	{
@@ -82,7 +77,7 @@ void UShootComponent::ShootProjectile()
 		m_PowerLevel = 1;
 
 		// Spawn an instance of the Blueprint class using the GetWorld()->SpawnActor function
-		AActor* SpawnActor = GetWorld()->SpawnActor(m_Projectile1, &SpawnTransform);
+		SpawnActor = GetWorld()->SpawnActor(m_Projectile1, &SpawnTransform);
 
 		SpawnProjectileBP = m_Projectile1;
 	}
@@ -92,7 +87,7 @@ void UShootComponent::ShootProjectile()
 		m_PowerLevel = 2;
 
 		// Spawn an instance of the Blueprint class using the GetWorld()->SpawnActor function
-		AActor* SpawnActor = GetWorld()->SpawnActor(m_Projectile2, &SpawnTransform);
+		SpawnActor = GetWorld()->SpawnActor(m_Projectile2, &SpawnTransform);
 
 		SpawnProjectileBP = m_Projectile2;
 	}
@@ -102,7 +97,7 @@ void UShootComponent::ShootProjectile()
 		m_PowerLevel = 3;
 
 		// Spawn an instance of the Blueprint class using the GetWorld()->SpawnActor function
-		AActor* SpawnActor = GetWorld()->SpawnActor(m_Projectile3, &SpawnTransform);
+		SpawnActor = GetWorld()->SpawnActor(m_Projectile3, &SpawnTransform);
 
 		SpawnProjectileBP = m_Projectile3;
 	}

@@ -54,13 +54,10 @@ protected:
 
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
 	void ShootProjectile();
-	
-	// Different Projectile Levels
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
-	UArrowComponent* ArrowComponent;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
-	UClass* Player;
+	// Spawning Projectiles
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Shooting")
+	AActor* Player;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	UClass* m_Projectile1;
@@ -73,4 +70,13 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
 	UClass* SpawnProjectileBP;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	AActor* SpawnActor;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	FTransform SpawnTransform;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	FVector SpawnLocationOffset;
 };
