@@ -55,6 +55,10 @@ protected:
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
 	void ShootProjectile();
 
+	// Particles
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	UParticleSystemComponent* ChargingEffect;
+	
 	// Spawning Projectiles
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Shooting")
 	AActor* Player;

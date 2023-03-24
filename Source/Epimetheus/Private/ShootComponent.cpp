@@ -3,6 +3,8 @@
 
 #include "ShootComponent.h"
 
+#include "Particles/ParticleSystemComponent.h"
+
 // Sets default values for this component's properties
 UShootComponent::UShootComponent()
 {
@@ -43,7 +45,8 @@ void UShootComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 	}
 	
 	m_CurrentBuildTimer += DeltaTime;
-
+	ChargingEffect->SetWorldLocation(Player->GetActorLocation() + SpawnLocationOffset);
+	
 	if (m_CurrentBuildTimer >= m_MaxBuildTime)
 	{
 		ShootProjectile();
@@ -54,19 +57,26 @@ void UShootComponent::BuildProjectile()
 {
 	m_CurrentBuildTimer = 0.f;
 	m_CanStartBuilding = true;
+	ChargingEffect->Activate(true);
 }
 
 
 void UShootComponent::ShootProjectile()
 {
+	// Doesnt shoot if the player wasn't building
+	//For when players lets go of mouse button after already shooting from having full charge
+	if (!m_CanStartBuilding)
+		return;
+	
 	// Stop building power
 	m_CanStartBuilding = false;
+	ChargingEffect->Deactivate();
 
 	// Get the world location of the arrow component
-	FVector SpawnLocation = Player->GetActorLocation() + SpawnLocationOffset;
+	FVector const SpawnLocation = Player->GetActorLocation() + SpawnLocationOffset;
 
 	// Set the desired rotation for the spawned actor
-	FRotator SpawnRotation = Player->GetActorRotation();
+	FRotator const SpawnRotation = Player->GetActorRotation();
 
 	// Create a new FTransform object using the spawn location and rotation
 	SpawnTransform = FTransform(SpawnRotation, SpawnLocation);
