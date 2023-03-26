@@ -22,11 +22,15 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Components")
 	FComponentDeadSignature onComponentDead;
+
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
+	void UpdateBars();
 	
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-
+	
+	// Health Variables
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
 	float m_CurrentHealth;
 
@@ -44,7 +48,20 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
 	float m_HealthRecoverDelay;
+	
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
+    float CurrentHealthPercent;
 
+	// Shield Variables
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
+	float m_CurrentShield;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
+	float m_MaxShieldh;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
+	float CurrentShieldPercent;
+	
 	UFUNCTION()
 	void DamageTaken(AActor* damagedActor, float damageTaken, const UDamageType* damageType, AController* instigator, AActor* damager);
 };
