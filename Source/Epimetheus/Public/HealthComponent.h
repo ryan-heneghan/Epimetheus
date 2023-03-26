@@ -25,6 +25,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
 	void UpdateBars();
+
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
+	void AddHealthOrShield(float AddedHealth, float AddedShield);
 	
 protected:
 	// Called when the game starts

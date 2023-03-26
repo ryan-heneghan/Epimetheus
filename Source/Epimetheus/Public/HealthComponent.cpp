@@ -76,3 +76,20 @@ void UHealthComponent::UpdateBars()
 	CurrentShieldPercent = m_CurrentShield / m_MaxShieldh;
 	CurrentHealthPercent = m_CurrentHealth / m_MaxHealth;
 }
+
+void UHealthComponent::AddHealthOrShield(float AddedHealth, float AddedShield)
+{
+	m_CurrentHealth += AddedHealth;
+	if (m_CurrentHealth > m_MaxHealth)
+	{
+		m_CurrentHealth = m_MaxHealth;
+	}
+
+	m_CurrentShield += AddedShield;
+	if (m_CurrentShield > m_MaxShieldh)
+	{
+		m_CurrentShield = m_MaxShieldh;
+	}
+
+	UpdateBars();
+}
