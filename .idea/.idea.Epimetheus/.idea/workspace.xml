@@ -9,10 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="077c0d02-fb69-4df0-8f8e-887211627947" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Audio/Collapse01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Audio/Collapse01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/7X/7FKM1C966EUXOHRT1R9OTF.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/7X/7FKM1C966EUXOHRT1R9OTF.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/SU/J0PVLPHXI8RXD092SUQV6G.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/SU/J0PVLPHXI8RXD092SUQV6G.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
