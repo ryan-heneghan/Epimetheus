@@ -67,4 +67,11 @@ protected:
 	
 	UFUNCTION()
 	void DamageTaken(AActor* damagedActor, float damageTaken, const UDamageType* damageType, AController* instigator, AActor* damager);
+
+	// Death Variables
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
+	int CurrentLives;
+	
+	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
+	void TakeLife();
 };

@@ -8,7 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077c0d02-fb69-4df0-8f8e-887211627947" name="Changes" comment="" />
+    <list default="true" id="077c0d02-fb69-4df0-8f8e-887211627947" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/7X/7FKM1C966EUXOHRT1R9OTF.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/7X/7FKM1C966EUXOHRT1R9OTF.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/SU/J0PVLPHXI8RXD092SUQV6G.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/SU/J0PVLPHXI8RXD092SUQV6G.uasset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,6 +170,8 @@
       <workItem from="1679670753900" duration="6176000" />
       <workItem from="1679693109829" duration="3795000" />
       <workItem from="1679842578714" duration="3509000" />
+      <workItem from="1680028469718" duration="310000" />
+      <workItem from="1681733802660" duration="1993000" />
     </task>
     <servers />
   </component>

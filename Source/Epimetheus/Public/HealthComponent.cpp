@@ -15,6 +15,7 @@ UHealthComponent::UHealthComponent()
 
 	m_MaxShieldh = 100.0f;
 	m_CurrentShield = 50.0f;
+	CurrentLives = 3;
 }
 
 
@@ -93,3 +94,9 @@ void UHealthComponent::AddHealthOrShield(float AddedHealth, float AddedShield)
 
 	UpdateBars();
 }
+
+void UHealthComponent::TakeLife()
+{
+	CurrentLives--;
+}
+
