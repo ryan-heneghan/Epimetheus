@@ -41,16 +41,13 @@ protected:
 	float m_MaxHealth;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
-	bool m_CanRegenHealth;
+	bool IsInvincible;
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Health")
+	float InvincibilityTimer;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
-	float m_HealthRegenDelayTimer;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
-	float m_HealthRecoverRate;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
-	float m_HealthRecoverDelay;
+	float CurrentInvincibleTIme;
 	
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
     float CurrentHealthPercent;
@@ -68,6 +65,16 @@ protected:
 	UFUNCTION()
 	void DamageTaken(AActor* damagedActor, float damageTaken, const UDamageType* damageType, AController* instigator, AActor* damager);
 
+	// Particles
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Particle")
+	UParticleSystemComponent* InvincibleEffect;
+	
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Particle")
+	AActor* Player;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Particle")
+	FVector SpawnLocationOffset;
+	
 	// Death Variables
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
 	int CurrentLives;
