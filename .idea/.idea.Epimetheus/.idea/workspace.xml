@@ -9,12 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="077c0d02-fb69-4df0-8f8e-887211627947" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Epimetheus/Public/HealthComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Epimetheus/Public/HealthComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Epimetheus/Public/HealthComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Epimetheus/Public/HealthComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Epimetheus/Private/HealthComponent2.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Epimetheus/Public/HealthComponent2.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +173,7 @@
       <workItem from="1680028469718" duration="310000" />
       <workItem from="1681733802660" duration="1993000" />
       <workItem from="1681905823859" duration="2000" />
-      <workItem from="1682093476731" duration="3067000" />
+      <workItem from="1682093476731" duration="3770000" />
     </task>
     <servers />
   </component>
@@ -186,6 +182,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
