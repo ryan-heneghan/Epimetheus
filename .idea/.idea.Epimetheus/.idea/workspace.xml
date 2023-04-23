@@ -9,6 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="077c0d02-fb69-4df0-8f8e-887211627947" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Epimetheus/Private/HealthComponent2.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Epimetheus/Public/HealthComponent2.h" beforeDir="false" />
     </list>
@@ -173,7 +175,7 @@
       <workItem from="1680028469718" duration="310000" />
       <workItem from="1681733802660" duration="1993000" />
       <workItem from="1681905823859" duration="2000" />
-      <workItem from="1682093476731" duration="3770000" />
+      <workItem from="1682093476731" duration="4364000" />
     </task>
     <servers />
   </component>
