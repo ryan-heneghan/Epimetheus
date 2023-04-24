@@ -32,6 +32,7 @@ void UTurretAIComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// Initialise turret variables
+	CurrentFireTime = FireRate;
 	
 	// Start Script
 }
