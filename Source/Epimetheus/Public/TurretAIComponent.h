@@ -40,10 +40,10 @@ protected:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Actor")
 	AActor* Turret;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Actor")
-	AActor* TurretHead;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Actor")
+	UStaticMeshComponent* TurretHead;
 	
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Actor")
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Actor")
 	FVector TurretPosition;
 
 	// Time variables
@@ -56,6 +56,7 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Time")
 	float FireRate;
+	float CurrentFireTime;
 
 	float CurrentDeltaTime;
 	
@@ -73,8 +74,8 @@ protected:
 	bool IsPlayerClose;
 
 	// Shooting Variables
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
-	AActor* FirePosition;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	FVector FirePositionOffset;
 	FTransform SpawnTransform;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")

@@ -17,9 +17,10 @@ UTurretAIComponent::UTurretAIComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	// ...
-	DistanceForClose = 500.f;
+	DistanceForClose = 700.f;
 	CheckTime = 0.01f;
-	FireRate = 1500.f;
+	FireRate = 1.5f;
+	RotationSpeed = 5.f;
 
 	Turret = GetOwner();
 }
@@ -31,7 +32,6 @@ void UTurretAIComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// Initialise turret variables
-	TurretPosition = Turret->GetActorLocation();
 	
 	// Start Script
 }
@@ -52,11 +52,24 @@ void UTurretAIComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 	{
 		CheckDistance();
 	}
+
+	if (IsPlayerClose)
+	{
+		if (CurrentFireTime >= 0.f)
+		{
+			CurrentFireTime -= DeltaTime;
+		}
+		else
+		{
+			TurretShoot();
+		}
+	}
 }
 
 void UTurretAIComponent::CheckDistance()
 {
 	// Get distance between turret and player
+	TurretPosition = Turret->GetActorLocation();
 	DistanceVector = TurretPosition - Player->GetActorLocation();
 	DistanceFromPlayer = DistanceVector.Distance(TurretPosition, Player->GetActorLocation());
 
@@ -83,22 +96,21 @@ void UTurretAIComponent::LookAtPlayer()
 	// Get and set rotation
 	FVector Direction = TurretPosition - Player->GetActorLocation();
 	FRotator Rot = FRotationMatrix::MakeFromX(Direction).Rotator();
-	FRotator TargetRotation = FRotator(Rot.Pitch, Rot.Yaw, 0.f);
-	FRotator MovingRotation =  FMath::RInterpTo(TurretHead->GetActorRotation(), TargetRotation, CurrentDeltaTime, RotationSpeed);
+	FRotator TargetRotation = FRotator(-Rot.Pitch, -Rot.Yaw, 0.f);
+	FRotator MovingRotation =  FMath::RInterpTo(TurretHead->GetComponentRotation(), TargetRotation, CurrentDeltaTime, RotationSpeed);
 
-	TurretHead->SetActorRotation(MovingRotation);
-
-	// Wait to call shoot function
-	Concurrency::wait(FireRate);
-	TurretShoot();
+	TurretHead->SetWorldRotation(MovingRotation);
 }
 
 void UTurretAIComponent::TurretShoot()
 {
 	// Get fire point location and rotation
-	SpawnTransform = FTransform(TurretHead->GetActorRotation(), FirePosition->GetActorLocation());
+	SpawnTransform = FTransform(TurretHead->GetComponentRotation(), TurretPosition + FirePositionOffset);
 	
 	// Spawn projectile
 	SpawnBulletActor = GetWorld()->SpawnActor(TurretProjectile, &SpawnTransform);
+
+	// Reset Timer
+	CurrentFireTime = FireRate;
 }
 

@@ -39,7 +39,7 @@ void UHealthComponent::BeginPlay()
 
 void UHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken, const UDamageType* damageType, AController* instigator, AActor* damager)
 {
-	if (IsInvincible)
+	if (!damageType->bCausedByWorld && IsInvincible)
 		return;
 	
 	// Takes away damage amount by shield amount, but locks it at 0
@@ -58,10 +58,13 @@ void UHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken, cons
 
 	UpdateBars();
 
-	// Sets timer for invincibilty
-	IsInvincible = true;
-	CurrentInvincibleTIme = InvincibilityTimer;
-	InvincibleEffect->Activate(true);
+	// Sets timer for invincibility
+	if (!damageType->bCausedByWorld)
+	{
+		IsInvincible = true;
+		CurrentInvincibleTIme = InvincibilityTimer;
+		InvincibleEffect->Activate(true);	
+	}
 }
 
 // Called every frame
