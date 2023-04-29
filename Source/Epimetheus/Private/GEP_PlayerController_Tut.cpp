@@ -30,13 +30,13 @@ void AGEP_PlayerController_Tut::Handle_MatchStarted_Implementation()
 
 	// Return player start for respawn
 	AActor* TempStart = UGameplayStatics::GetGameMode(World)->FindPlayerStart(this);
-	FVector SpawnLocation = TempStart != nullptr ? TempStart->GetActorLocation() : FVector::ZeroVector;
-	FRotator SpawnRotation = TempStart != nullptr ? TempStart->GetActorRotation() : FRotator::ZeroRotator;
+	FVector const spawnLocation = TempStart != nullptr ? TempStart->GetActorLocation() : FVector::ZeroVector;
+	FRotator const SpawnRotation = TempStart != nullptr ? TempStart->GetActorRotation() : FRotator::ZeroRotator;
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
 	// Spawns pawn into world
-	APawn* TempPawn = World->SpawnActor<APawn>(PawnToSpawn, SpawnLocation, SpawnRotation, SpawnParams);
+	APawn* TempPawn = World->SpawnActor<APawn>(PawnToSpawn, spawnLocation, SpawnRotation, SpawnParams);
 
 	// Casts temp pawn to variable and stores it, runs if successful
 	if (ANew_ThirdPersonCharacter_Tut* CastedPawn = Cast<ANew_ThirdPersonCharacter_Tut>(TempPawn))
