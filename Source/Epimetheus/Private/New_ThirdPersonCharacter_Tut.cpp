@@ -7,20 +7,26 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogCharacterTut, Display, All);
 
 ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 {
 	GetCapsuleComponent()->InitCapsuleSize(35.f, 90.f);
-
+	
+	// Configure character movement
+	GetCharacterMovement()->bUseControllerDesiredRotation = true; // Character moves in the direction of input...	
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f); // ...at this rotation rate
+	
+	// Camera
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(GetCapsuleComponent());
 	Camera->SetRelativeLocation(FVector(-600.f, 0.f, 100.f));
 	Camera->bUsePawnControlRotation = false;
 
 	WeaponAttachPoint = CreateDefaultSubobject<USceneComponent>(TEXT("WeaponAttachPoint"));
-	//WeaponAttachPoint->SetupAttachment(Player);
+	WeaponAttachPoint->SetupAttachment(GetCapsuleComponent());
 }
 
 void ANew_ThirdPersonCharacter_Tut::BeginPlay()
@@ -59,16 +65,21 @@ void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
 
 	if (Controller != nullptr)
 	{
-		AddMovementInput(GetActorRightVector(), MovementValue);
+<<<<<<< HEAD
+		// Find out
+		if (MovementValue > 0) // Right
+		{
+			
+		}
+		else if (MovementValue < 0) // Left
+		{
+			
+		}
 
-		if (MovementValue > 0)
-		{
-			SetActorRotation(FRotator(0,90,0), ETeleportType::None);
-		}
-		else if (MovementValue < 0)
-		{
-			SetActorRotation(FRotator(0,-90,0), ETeleportType::None);
-		}
+		// Add movement
+=======
+>>>>>>> parent of b4cc951 (CHNAGES)
+		AddMovementInput(GetActorRightVector(), MovementValue);
 	}
 }
 
@@ -95,8 +106,10 @@ void ANew_ThirdPersonCharacter_Tut::SetupPlayerInputComponent(UInputComponent* P
 
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Move);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+		
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Move);
 		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Shoot);
 		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Crouch);
 	}

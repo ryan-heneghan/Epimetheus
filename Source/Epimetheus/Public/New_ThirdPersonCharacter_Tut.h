@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "InputActionValue.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "New_ThirdPersonCharacter_Tut.generated.h"
 
 // Stops circular definitions??? makes sense... i think
