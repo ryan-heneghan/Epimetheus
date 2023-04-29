@@ -14,15 +14,6 @@ UCLASS(Abstract)
 class EPIMETHEUS_API AWeapon_Base : public AActor, public IFireable
 {
 	GENERATED_BODY()
-
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, meta=(AllowPrivateAccess = true))
-	TObjectPtr<USceneComponent> Root;
-
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, meta=(AllowPrivateAccess = true))
-	TObjectPtr<USkeletalMeshComponent> Mesh;
-
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, meta=(AllowPrivateAccess = true))
-	TObjectPtr<UArrowComponent> FirePoint;
 	
 public:
 	// Sets default values for this actor's properties
@@ -33,5 +24,14 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
+	TObjectPtr<USceneComponent> Root;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
+	TObjectPtr<USkeletalMeshComponent> Mesh;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, meta=(AllowPrivateAccess = true))
+	TObjectPtr<UArrowComponent> FirePoint;
 
 };
