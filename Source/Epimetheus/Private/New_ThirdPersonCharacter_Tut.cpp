@@ -12,11 +12,11 @@ DEFINE_LOG_CATEGORY_STATIC(LogCharacterTut, Display, All);
 
 ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 {
-	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.f);
+	GetCapsuleComponent()->InitCapsuleSize(35.f, 90.f);
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(GetCapsuleComponent());
-	Camera->SetRelativeLocation(FVector(-50.f, 0.f, 100.f));
+	Camera->SetRelativeLocation(FVector(-600.f, 0.f, 100.f));
 	Camera->bUsePawnControlRotation = false;
 
 	WeaponAttachPoint = CreateDefaultSubobject<USceneComponent>(TEXT("WeaponAttachPoint"));
