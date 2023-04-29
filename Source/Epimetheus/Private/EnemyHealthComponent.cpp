@@ -33,7 +33,7 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 	if (CurrentHealth <= 0)
 	{
 		// Hides actors, no garbage collection
-		GetWorld()->DestroyActor(EnemySelf);
+		//Destroy();
 	}
 }
 

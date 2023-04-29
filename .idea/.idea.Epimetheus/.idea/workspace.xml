@@ -8,12 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077c0d02-fb69-4df0-8f8e-887211627947" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Epimetheus/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyBlueprint/BP_Player_Projectile_Level_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyBlueprint/BP_Player_Projectile_Level_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyBlueprint/BP_Player_Projectile_Level_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyBlueprint/BP_Player_Projectile_Level_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/7X/7FKM1C966EUXOHRT1R9OTF.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/7X/7FKM1C966EUXOHRT1R9OTF.uasset" afterDir="false" />
-    </list>
+    <list default="true" id="077c0d02-fb69-4df0-8f8e-887211627947" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,6 +90,16 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
       </configuration_5>
+      <configuration_6>
+        <option name="CONFIGURATION" value="" />
+        <option name="PLATFORM" value="" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/Epimetheus.vcxproj" />
+        <option name="EXE_PATH" value="$(TargetPath)" />
+        <option name="PROGRAM_PARAMETERS" value="" />
+        <option name="WORKING_DIRECTORY" value="$(ProjectDir)" />
+        <option name="PASS_PARENT_ENVS" value="1" />
+        <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      </configuration_6>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/Epimetheus.vcxproj" />
       <method v="2">
         <option name="Build" />
@@ -182,6 +187,7 @@
       <workItem from="1682093476731" duration="4364000" />
       <workItem from="1682328164600" duration="14122000" />
       <workItem from="1682352910619" duration="4620000" />
+      <workItem from="1682778157660" duration="935000" />
     </task>
     <servers />
   </component>
