@@ -3,9 +3,12 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Fireable.h"
+#include "Weapon_Base.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+
+DEFINE_LOG_CATEGORY_STATIC(LogCharacterTut, Display, All);
 
 ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 {
