@@ -21,7 +21,7 @@ ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 	
 	// Camera
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	Camera->SetupAttachment(GetCapsuleComponent());
+	Camera->SetupAttachment(RootComponent);
 	Camera->SetRelativeLocation(FVector(-600.f, 0.f, 100.f));
 	Camera->bUsePawnControlRotation = false;
 
@@ -29,10 +29,8 @@ ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 	WeaponAttachPoint->SetupAttachment(GetCapsuleComponent());
 }
 
-void ANew_ThirdPersonCharacter_Tut::BeginPlay()
+void ANew_ThirdPersonCharacter_Tut::Init_Implementation()
 {
-	Super::BeginPlay();
-
 	// Setup weapon in world
 	if(DefaultWeapon)
 	{
@@ -47,16 +45,6 @@ void ANew_ThirdPersonCharacter_Tut::BeginPlay()
 			FireableReference = SpawnedWeapon;
 		}
 	}
-
-	// Setup mapping context
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			// Turns on our specific controls if true
-			Subsystem->AddMappingContext(PlayerMappingContext, 0);
-		}
-	}
 }
 
 void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
@@ -68,7 +56,7 @@ void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
 		// Find out
 		if (MovementValue > 0) // Right
 		{
-			
+
 		}
 		else if (MovementValue < 0) // Left
 		{

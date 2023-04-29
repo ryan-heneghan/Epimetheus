@@ -46,6 +46,9 @@ public:
 	// Sets default values for this character's properties
 	ANew_ThirdPersonCharacter_Tut();
 
+	UFUNCTION(BlueprintNativeEvent)
+	void Init();
+
 protected:
 	// Called when the game starts or when spawned
 
@@ -54,8 +57,6 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<AActor> FireableReference;
-	
-	virtual void BeginPlay() override;
 
 	// Callback function for inout
 	void Move(const FInputActionValue& Value);
