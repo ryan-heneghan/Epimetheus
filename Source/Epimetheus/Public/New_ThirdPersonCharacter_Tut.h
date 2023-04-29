@@ -61,7 +61,8 @@ protected:
 	void Move(const FInputActionValue& Value);
 	void Jump();
 	void Shoot();
-	void Crouch();
+	void StartCrouch();
+	void StopCrouch();
 	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

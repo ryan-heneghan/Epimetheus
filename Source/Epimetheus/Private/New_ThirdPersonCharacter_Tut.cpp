@@ -94,8 +94,14 @@ void ANew_ThirdPersonCharacter_Tut::Shoot()
 	}
 }
 
-void ANew_ThirdPersonCharacter_Tut::Crouch()
+void ANew_ThirdPersonCharacter_Tut::StartCrouch()
 {
+	GetCapsuleComponent()->InitCapsuleSize(35.f, 90.f);
+}
+
+void ANew_ThirdPersonCharacter_Tut::StopCrouch()
+{
+	GetCapsuleComponent()->InitCapsuleSize(35.f, 45.f);
 }
 
 void ANew_ThirdPersonCharacter_Tut::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -104,11 +110,18 @@ void ANew_ThirdPersonCharacter_Tut::SetupPlayerInputComponent(UInputComponent* P
 
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
+		// Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-		
+
+		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Move);
+
+		// Shoot
 		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Shoot);
-		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Crouch);
+
+		// Crouching
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::StartCrouch);
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Completed, this, &ANew_ThirdPersonCharacter_Tut::StopCrouch);
 	}
 }
