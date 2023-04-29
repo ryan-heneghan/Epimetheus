@@ -42,6 +42,9 @@ void UTurretAIComponent::BeginPlay()
 void UTurretAIComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	if (Player == nullptr)
+		return;
 	
 	CurrentDeltaTime = DeltaTime;
 
@@ -69,6 +72,8 @@ void UTurretAIComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 
 void UTurretAIComponent::CheckDistance()
 {
+
+	
 	// Get distance between turret and player
 	TurretPosition = Turret->GetActorLocation();
 	DistanceVector = TurretPosition - Player->GetActorLocation();
