@@ -60,6 +60,15 @@ void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
 	if (Controller != nullptr)
 	{
 		AddMovementInput(GetActorRightVector(), MovementValue);
+
+		if (MovementValue > 0)
+		{
+			SetActorRotation(FRotator(0,90,0), ETeleportType::None);
+		}
+		else if (MovementValue < 0)
+		{
+			SetActorRotation(FRotator(0,-90,0), ETeleportType::None);
+		}
 	}
 }
 
