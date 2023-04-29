@@ -25,7 +25,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TArray<TObjectPtr<AController>> PlayerControllers;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MatchManagement")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = MatchManagement)
 	int CountdownTimer;
 
 	FTimerHandle TimerDecreaseCountdown;
