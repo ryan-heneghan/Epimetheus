@@ -1,8 +1,11 @@
 #include "New_ThirdPersonCharacter_Tut.h"
 
 #include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "Fireable.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 {
@@ -20,6 +23,31 @@ ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 void ANew_ThirdPersonCharacter_Tut::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Setup weapon in world
+	if(DefaultWeapon)
+	{
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.Owner = this;
+		SpawnParams.Instigator = this;
+		TObjectPtr<AActor> SpawnedWeapon = GetWorld()->SpawnActor(DefaultWeapon, &WeaponAttachPoint->GetComponentTransform(), SpawnParams);
+		SpawnedWeapon->AttachToComponent(WeaponAttachPoint, FAttachmentTransformRules::SnapToTargetIncludingScale);
+		// Saves reference if implements interface
+		if (UKismetSystemLibrary::DoesImplementInterface(SpawnedWeapon, UFireable::StaticClass()))
+		{
+			FireableReference = SpawnedWeapon;
+		}
+	}
+
+	// Setup mapping context
+	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+		{
+			// Turns on our specific controls if true
+			Subsystem->AddMappingContext(PlayerMappingContext, 0);
+		}
+	}
 }
 
 void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
@@ -39,6 +67,10 @@ void ANew_ThirdPersonCharacter_Tut::Jump()
 
 void ANew_ThirdPersonCharacter_Tut::Shoot()
 {
+	if (FireableReference)
+	{
+		IFireable::Execute_Fire(FireableReference);
+	}
 }
 
 void ANew_ThirdPersonCharacter_Tut::Crouch()
