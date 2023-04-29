@@ -1,34 +1,59 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "New_ThirdPersonCharacter_Tut.h"
 
-// Sets default values
+#include "EnhancedInputComponent.h"
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
+
 ANew_ThirdPersonCharacter_Tut::ANew_ThirdPersonCharacter_Tut()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.f);
 
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(GetCapsuleComponent());
+	Camera->SetRelativeLocation(FVector(-50.f, 0.f, 100.f));
+	Camera->bUsePawnControlRotation = false;
+
+	WeaponAttachPoint = CreateDefaultSubobject<USceneComponent>(TEXT("WeaponAttachPoint"));
+	//WeaponAttachPoint->SetupAttachment(Player);
 }
 
-// Called when the game starts or when spawned
 void ANew_ThirdPersonCharacter_Tut::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
+{
+	float MovementValue = Value.Get<float>();
+
+	if (Controller != nullptr)
+	{
+		AddMovementInput(GetActorRightVector(), MovementValue);
+	}
+}
+
+void ANew_ThirdPersonCharacter_Tut::Jump()
+{
 	
 }
 
-// Called every frame
-void ANew_ThirdPersonCharacter_Tut::Tick(float DeltaTime)
+void ANew_ThirdPersonCharacter_Tut::Shoot()
 {
-	Super::Tick(DeltaTime);
-
 }
 
-// Called to bind functionality to input
+void ANew_ThirdPersonCharacter_Tut::Crouch()
+{
+}
+
 void ANew_ThirdPersonCharacter_Tut::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	//Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
+	{
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Move);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Shoot);
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Triggered, this, &ANew_ThirdPersonCharacter_Tut::Crouch);
+	}
 }
-

@@ -58,8 +58,8 @@ protected:
 
 	// Callback function for inout
 	void Move(const FInputActionValue& Value);
-	void Shoot();
 	void Jump();
+	void Shoot();
 	void Crouch();
 	
 	// Called to bind functionality to input
