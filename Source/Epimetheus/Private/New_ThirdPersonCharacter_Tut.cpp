@@ -65,7 +65,6 @@ void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
 
 	if (Controller != nullptr)
 	{
-<<<<<<< HEAD
 		// Find out
 		if (MovementValue > 0) // Right
 		{
@@ -77,8 +76,7 @@ void ANew_ThirdPersonCharacter_Tut::Move(const FInputActionValue& Value)
 		}
 
 		// Add movement
-=======
->>>>>>> parent of b4cc951 (CHNAGES)
+		
 		AddMovementInput(GetActorRightVector(), MovementValue);
 	}
 }
