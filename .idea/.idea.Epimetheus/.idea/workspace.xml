@@ -27,14 +27,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="C++ Project.Epimetheus">
     <configuration name="Epimetheus" type="CppProject" factoryName="C++ Project">
@@ -176,7 +169,9 @@
       <workItem from="1682328164600" duration="14122000" />
       <workItem from="1682352910619" duration="4620000" />
       <workItem from="1682778157660" duration="935000" />
-      <workItem from="1682958169381" duration="2314000" />
+      <workItem from="1682958169381" duration="3216000" />
+      <workItem from="1682961699546" duration="40000" />
+      <workItem from="1682962845084" duration="1000" />
     </task>
     <servers />
   </component>

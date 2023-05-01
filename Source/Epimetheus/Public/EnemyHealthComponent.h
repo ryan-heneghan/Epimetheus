@@ -29,7 +29,7 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 	AActor* EnemySelf;
-
+	
 	// Health Variables
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
 	float MaxHealth;
@@ -37,6 +37,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
 	float CurrentHealth;
 
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
 	float CurrentHealthPercent;
 
 	UFUNCTION()
