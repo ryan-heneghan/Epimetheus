@@ -42,6 +42,9 @@ void UTurretAIComponent::BeginPlay()
 void UTurretAIComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	if (Player == nullptr)
+		return;
 	
 	CurrentDeltaTime = DeltaTime;
 

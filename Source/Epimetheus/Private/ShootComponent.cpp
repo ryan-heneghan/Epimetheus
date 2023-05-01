@@ -14,10 +14,13 @@ UShootComponent::UShootComponent()
 	m_PowerLevel = 1;
 	m_CurrentBuildTimer = 0.f;
 	m_CanStartBuilding = false;
-
+	
 	m_Level2PowerPoint = 0.5f;
 	m_Level3PowerPoint = 1.5f;
 
+	MaxBulletPerSecond = 2;
+	MaxShootCooldownTimer = 1;
+	
 	SpawnLocationOffset = FVector3d(60.0f, 0.0f, 40.0f);
 	
 	Player = GetOwner();
@@ -30,6 +33,7 @@ void UShootComponent::BeginPlay()
 	Super::BeginPlay();
 
 	m_CurrentBuildTimer = 0.f;
+	CurrentShootCooldownTimer = 0.f;
 	Player = GetOwner();
 }
 
@@ -39,6 +43,32 @@ void UShootComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	// Ammo timer thing
+	// Start cooldown timer when shoot
+	if (CurrentBulletAmount > 0)
+	{
+		if (CurrentShootCooldownTimer <= 0)
+		{
+			CurrentBulletAmount = 0;
+			CurrentShootCooldownTimer = MaxShootCooldownTimer;
+		}
+		else
+		{
+			CurrentShootCooldownTimer -= DeltaTime;
+		}
+	}
+
+	// Decide if the player has enough ammo
+	if (CurrentBulletAmount > MaxBulletPerSecond)
+	{
+		OutOfAmmo = true;
+	}
+	else
+	{
+		OutOfAmmo = false;
+	}
+
+	// Building power timer
 	if (!m_CanStartBuilding)
 	{
 		return;
@@ -55,6 +85,10 @@ void UShootComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 
 void UShootComponent::BuildProjectile()
 {
+	// Dont let player build if used max bullets per second
+	if (OutOfAmmo)
+		return;
+	
 	m_CurrentBuildTimer = 0.f;
 	m_CanStartBuilding = true;
 	ChargingEffect->Activate(true);
@@ -66,6 +100,10 @@ void UShootComponent::ShootProjectile()
 	// Doesnt shoot if the player wasn't building
 	//For when players lets go of mouse button after already shooting from having full charge
 	if (!m_CanStartBuilding)
+		return;
+
+	// Dont let player shoot if used max bullets per second
+	if (OutOfAmmo)
 		return;
 	
 	// Stop building power
@@ -111,6 +149,9 @@ void UShootComponent::ShootProjectile()
 
 		SpawnProjectileBP = m_Projectile3;
 	}
+
+	// Increase bullet account for ammo
+	CurrentBulletAmount++;
 }
 
 

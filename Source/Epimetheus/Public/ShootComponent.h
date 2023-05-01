@@ -31,12 +31,30 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Shooting")
+	// Build timer
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
 	float m_CurrentBuildTimer;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	float m_MaxBuildTime;
 
+	// Cooldown timers
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	float CurrentShootCooldownTimer;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	float MaxShootCooldownTimer;
+	
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	int CurrentBulletAmount;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	int MaxBulletPerSecond;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	bool OutOfAmmo;
+
+	// Different Bullets
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	float m_Level1PowerPoint;
 
