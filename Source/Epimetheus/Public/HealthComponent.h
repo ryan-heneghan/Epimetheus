@@ -43,7 +43,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
 	bool IsInvincible;
 
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Health")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Health")
 	float InvincibilityTimer;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
