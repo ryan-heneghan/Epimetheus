@@ -99,6 +99,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
 	FTransform SpawnTransform;
 
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Shooting")
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	FVector SpawnLocationOffset;
 };
