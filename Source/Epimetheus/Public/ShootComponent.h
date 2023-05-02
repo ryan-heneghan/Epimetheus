@@ -80,6 +80,9 @@ protected:
 	// Spawning Projectiles
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Shooting")
 	AActor* Player;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
+	UStaticMeshComponent* ProjSpawnComp;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	UClass* m_Projectile1;

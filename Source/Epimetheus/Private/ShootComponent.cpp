@@ -108,7 +108,8 @@ void UShootComponent::ShootProjectile()
 	ChargingEffect->Deactivate();
 
 	// Get the world location of the arrow component
-	FVector const SpawnLocation = Player->GetActorLocation() + SpawnLocationOffset;
+	//FVector const SpawnLocation = Player->GetActorLocation() + SpawnLocationOffset;
+	FVector const SpawnLocation = ProjSpawnComp->GetComponentLocation();
 
 	// Set the desired rotation for the spawned actor
 	FRotator const SpawnRotation = Player->GetActorRotation();
