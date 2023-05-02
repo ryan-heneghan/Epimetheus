@@ -1,34 +1,50 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "Components/InputComponent.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
 #include "WeaponSelectorComponent.h"
 
-// Sets default values for this component's properties
 UWeaponSelectorComponent::UWeaponSelectorComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
+}
 
-	// ...
+void UWeaponSelectorComponent::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	// Set up action bindings
+	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
+	{
+		EnhancedInputComponent->BindAction(DefaultAction, ETriggerEvent::Triggered, this, &UWeaponSelectorComponent::BasicSwitch);
+
+		EnhancedInputComponent->BindAction(BounceAction, ETriggerEvent::Triggered, this, &UWeaponSelectorComponent::BounceSwitch);
+		
+		EnhancedInputComponent->BindAction(WaveAction, ETriggerEvent::Triggered, this, &UWeaponSelectorComponent::WaveSwitch);
+
+	}
 }
 
 
-// Called when the game starts
 void UWeaponSelectorComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
 	
+	SelectedWeapon = EWeaponList::Basic;
 }
 
-
-// Called every frame
-void UWeaponSelectorComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UWeaponSelectorComponent::BasicSwitch()
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
+	SelectedWeapon = EWeaponList::Basic;
 }
+
+void UWeaponSelectorComponent::BounceSwitch()
+{
+	SelectedWeapon = EWeaponList::Bounce;
+}
+
+void UWeaponSelectorComponent::WaveSwitch()
+{
+	SelectedWeapon = EWeaponList::Wave;
+}
+
 
