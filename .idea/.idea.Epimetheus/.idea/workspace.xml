@@ -16,8 +16,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Source/Epimetheus/Private/EnemyHealthComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Epimetheus/Private/WeaponSelectorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Epimetheus/Public/EnemyHealthComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Epimetheus/Public/HealthComponent.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Epimetheus/Public/WeaponSelectorComponent.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -180,7 +182,7 @@
       <workItem from="1682958169381" duration="3216000" />
       <workItem from="1682961699546" duration="40000" />
       <workItem from="1682962845084" duration="1000" />
-      <workItem from="1682977627199" duration="4801000" />
+      <workItem from="1682977627199" duration="6310000" />
     </task>
     <servers />
   </component>

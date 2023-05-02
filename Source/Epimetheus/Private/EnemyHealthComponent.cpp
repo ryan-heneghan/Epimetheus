@@ -18,8 +18,6 @@ void UEnemyHealthComponent::BeginPlay()
 	Super::BeginPlay();
 
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UEnemyHealthComponent::DamageTaken);
-
-	EnemySelf->GetOwner();
 	
 	CurrentHealth = MaxHealth;
 	CurrentHealthPercent = CurrentHealth / MaxHealth;
@@ -30,7 +28,8 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 	// Take damage
 	CurrentHealth -= damageTaken;
 
-	UpdateEnemyHealthBar();
+	// Updates enemy health bar
+	CurrentHealthPercent = CurrentHealth / MaxHealth;
 
 	// Particle effects
 	if (CurrentHealthPercent <= .25)
@@ -53,6 +52,8 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 		// Hides actors, no garbage collection
 		damagedActor->Destroy();
 	}
+
+	UpdateEnemyHealthBar();
 }
 
 void UEnemyHealthComponent::UpdateEnemyHealthBar()
