@@ -94,6 +94,9 @@ void UShootComponent::BuildProjectile()
 
 void UShootComponent::ShootProjectile()
 {
+	if (WeaponSelector->SelectedWeapon != listTest)
+		return;
+	
 	// Doesnt shoot if the player wasn't building
 	//For when players lets go of mouse button after already shooting from having full charge
 	if (!m_CanStartBuilding)

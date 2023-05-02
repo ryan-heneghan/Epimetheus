@@ -3,12 +3,23 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "InputActionValue.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/Actor.h"
 #include "Components/ActorComponent.h"
 #include "WeaponSelectorComponent.generated.h"
 
 
+// Enum for holding different weapons
+UENUM(BlueprintType)
+enum class EWeaponList : uint8 {
+	Basic	UMETA(DisplayName = "Basic"),
+	Bounce	UMETA(DisplayName = "Bounce"),
+	Wave	UMETA(DisplayName = "Wave"),
+	None
+};
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+
 class EPIMETHEUS_API UWeaponSelectorComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -30,18 +41,10 @@ protected:
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly)
 	void WaveSwitch();
 	
-	
-public:	
+public:
 
-	// Enum for holding different weapons
-	enum class EWeaponList : int {
-		Basic	= 0	UMETA(DisplayName = "Basic"),
-		Bounce	= 1	UMETA(DisplayName = "Bounce"),
-		Wave	= 2	UMETA(DisplayName = "Wave"),
-		None	= 3
-	};
-
-	EWeaponList SelectedWeapon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input, meta = (AllowPrivateAccess = "true"))
+	TEnumAsByte<EWeaponList> SelectedWeapon;
 
 	// How to get input again?
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
@@ -55,4 +58,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* WaveAction;
+
+	APlayerController* PlayerController;
 };

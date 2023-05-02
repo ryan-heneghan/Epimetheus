@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "WeaponSelectorComponent.h"
 #include "Components/ArrowComponent.h"
 #include "ShootComponent.generated.h"
 
@@ -104,4 +105,10 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Shooting")
 	FVector SpawnLocationOffset;
+
+	// Selection?
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Weapons")
+	UWeaponSelectorComponent* WeaponSelector;
+
+	EWeaponList listTest;
 };
