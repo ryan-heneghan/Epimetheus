@@ -40,6 +40,14 @@ protected:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Health")
 	float CurrentHealthPercent;
 
+	// Death
+	// Particles
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Death")
+	UParticleSystemComponent* LowHealthEffect;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Death")
+	UParticleSystemComponent* ExplosionEffect;
+
 	UFUNCTION()
 	void DamageTaken(AActor* damagedActor, float damageTaken, const UDamageType* damageType, AController* instigator, AActor* damager);
 

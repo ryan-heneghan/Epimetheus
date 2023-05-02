@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "Particles/ParticleSystemComponent.h"
 #include "EnemyHealthComponent.h"
 
 // Sets default values for this component's properties
@@ -19,6 +19,8 @@ void UEnemyHealthComponent::BeginPlay()
 
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UEnemyHealthComponent::DamageTaken);
 
+	EnemySelf->GetOwner();
+	
 	CurrentHealth = MaxHealth;
 	CurrentHealthPercent = CurrentHealth / MaxHealth;
 }
@@ -30,8 +32,24 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 
 	UpdateEnemyHealthBar();
 
+	// Particle effects
+	if (CurrentHealthPercent <= .25)
+	{
+		if (LowHealthEffect != nullptr)
+		{
+			LowHealthEffect->SetWorldLocation(EnemySelf->GetActorLocation());
+			LowHealthEffect->Activate(true);
+		}
+	}
+
 	if (CurrentHealth <= 0)
 	{
+		if (ExplosionEffect != nullptr)
+		{
+			ExplosionEffect->SetWorldLocation(EnemySelf->GetActorLocation());
+			ExplosionEffect->Activate(true);
+		}
+		
 		// Hides actors, no garbage collection
 		damagedActor->Destroy();
 	}
