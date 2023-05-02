@@ -1,5 +1,5 @@
 #include "ShootComponent.h"
-
+#include "WeaponSelectorComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 
 // Sets default values for this component's properties
