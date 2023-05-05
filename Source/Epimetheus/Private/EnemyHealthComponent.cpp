@@ -55,10 +55,13 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 
 		if (DeathSound != nullptr)
 		{
-			DeathSound->Play(0);
+			DeathSound->SetSound(DeathSoundCue);
+			DeathSound->Play();
 		}
 		// Hides actors, no garbage collection
-		damagedActor->Destroy();
+		damagedActor->SetActorHiddenInGame(true);
+		damagedActor->SetActorEnableCollision(false);
+		damagedActor->SetActorTickEnabled(false);
 	}
 
 	UpdateEnemyHealthBar();

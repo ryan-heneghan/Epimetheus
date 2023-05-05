@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Sound/SoundCue.h"
 #include "EnemyHealthComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FEnemyComponentDead, AController*, causer);
@@ -56,4 +57,7 @@ protected:
 	// Audio
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Audio")
     UAudioComponent* DeathSound;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Audio")
+    USoundCue* DeathSoundCue;
 };
