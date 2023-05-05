@@ -27,7 +27,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Health")
 	AActor* EnemySelf;
 	
 	// Health Variables
@@ -52,4 +52,8 @@ protected:
 	void DamageTaken(AActor* damagedActor, float damageTaken, const UDamageType* damageType, AController* instigator, AActor* damager);
 
 	// Visual Effects
+	
+	// Audio
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Audio")
+    UAudioComponent* DeathSound;
 };

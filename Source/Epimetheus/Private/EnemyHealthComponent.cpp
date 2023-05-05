@@ -3,6 +3,8 @@
 #include "Particles/ParticleSystemComponent.h"
 #include "EnemyHealthComponent.h"
 
+#include "Components/AudioComponent.h"
+
 // Sets default values for this component's properties
 UEnemyHealthComponent::UEnemyHealthComponent()
 {
@@ -21,6 +23,8 @@ void UEnemyHealthComponent::BeginPlay()
 	
 	CurrentHealth = MaxHealth;
 	CurrentHealthPercent = CurrentHealth / MaxHealth;
+
+	EnemySelf = GetOwner();
 }
 
 void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken, const UDamageType* damageType, AController* instigator, AActor* damager)
@@ -32,7 +36,7 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 	CurrentHealthPercent = CurrentHealth / MaxHealth;
 
 	// Particle effects
-	if (CurrentHealthPercent <= .25)
+	if (CurrentHealthPercent <= .3)
 	{
 		if (LowHealthEffect != nullptr)
 		{
@@ -48,7 +52,11 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 			ExplosionEffect->SetWorldLocation(EnemySelf->GetActorLocation());
 			ExplosionEffect->Activate(true);
 		}
-		
+
+		if (DeathSound != nullptr)
+		{
+			DeathSound->Play(0);
+		}
 		// Hides actors, no garbage collection
 		damagedActor->Destroy();
 	}
