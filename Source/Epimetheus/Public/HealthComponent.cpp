@@ -15,7 +15,7 @@ UHealthComponent::UHealthComponent()
 	CurrentInvincibleTIme = 0.f;
 
 	m_MaxShieldh = 100.0f;
-	m_CurrentShield = 50.0f;
+	m_CurrentShield = 0.0f;
 	CurrentLives = 3;
 
 	SpawnLocationOffset = FVector3d(60.0f, 0.0f, 40.0f);
