@@ -62,6 +62,9 @@ void UEnemyHealthComponent::DamageTaken(AActor* damagedActor, float damageTaken,
 		damagedActor->SetActorHiddenInGame(true);
 		damagedActor->SetActorEnableCollision(false);
 		damagedActor->SetActorTickEnabled(false);
+
+		// Kills actor
+		damagedActor->Destroy();
 	}
 
 	UpdateEnemyHealthBar();
