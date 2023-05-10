@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "WeaponSelectorComponent.h"
 #include "GameFramework/Character.h"
 #include "Components/InputComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "WeaponSelectorComponent.h"
 
 #include "HeadMountedDisplayTypes.h"
 
